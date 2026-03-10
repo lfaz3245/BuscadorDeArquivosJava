@@ -1,143 +1,158 @@
-# BuscadorDeArquivosJava
-Uma ferramenta de busca de arquivos rápida e intuitiva para Windows, desenvolvida em Java com interface gráfica Swing + FlatLaf.
-O aplicativo permite localizar arquivos no sistema mesmo quando o usuário não digita o nome exatamente correto, utilizando técnicas de fuzzy search para sugerir resultados semelhantes.
+# 🔎 BuscadorDeArquivosJava
 
-O objetivo do projeto é oferecer uma alternativa simples e leve para localizar arquivos no computador com uma interface moderna e funcionalidades úteis.
+Uma ferramenta de **busca de arquivos rápida e intuitiva para Windows**, desenvolvida em **Java** com interface gráfica **Swing + FlatLaf**.
 
-Funcionalidades
-Busca de arquivos
+O aplicativo permite localizar arquivos no sistema mesmo quando o usuário **não digita o nome exatamente correto**, utilizando técnicas de **fuzzy search** para sugerir resultados semelhantes.
 
-Pesquisa arquivos dentro de qualquer diretório
+O objetivo do projeto é oferecer uma alternativa **leve, rápida e fácil de usar** para localizar arquivos no computador com uma interface moderna.
 
-Busca recursiva em subpastas
+---
 
-Filtragem por nome aproximado (fuzzy search)
+# 📌 Funcionalidades
 
-Busca tolerante a erros
+## 🔍 Busca de Arquivos
+
+- Pesquisa arquivos dentro de qualquer diretório
+- Busca recursiva em subpastas
+- Filtragem por nome aproximado (**fuzzy search**)
+
+---
+
+## 🧠 Busca Tolerante a Erros
 
 Mesmo que o usuário digite o nome incorretamente, o programa ainda encontra resultados relevantes.
 
-Exemplo:
+| Entrada do usuário | Resultado encontrado |
+|-------------------|---------------------|
+| gta5 | gta5.exe |
+| gts5 | gta5.exe |
+| gtasa | gta_sa.exe |
 
-Entrada do usuário	Resultado encontrado
-gta5	gta5.exe
-gts5	gta5.exe
-gtasa	gta_sa.exe
+Essa funcionalidade é implementada usando **distância de Levenshtein**.
 
-Isso é feito usando distância de Levenshtein.
+---
 
-Interface gráfica moderna
+# 🖥 Interface Gráfica
 
 Interface desenvolvida com:
 
-Java Swing
+- **Java Swing**
+- **FlatLaf (tema moderno)**
 
-FlatLaf (tema moderno)
+### Características
 
-Características:
+- Interface moderna inspirada em **IntelliJ / Windows**
+- Tabela de resultados organizada
+- Ícones reais do Windows para arquivos
+- Experiência semelhante ao **Windows Explorer**
 
-tema moderno estilo IntelliJ / Windows
+---
 
-tabela de resultados
-
-ícones reais do Windows para arquivos
-
-Resultados em tempo real
+# ⚡ Resultados em Tempo Real
 
 Durante a busca:
 
-arquivos aparecem conforme são encontrados
+- Arquivos aparecem **conforme são encontrados**
+- A interface permanece **responsiva**
+- Uma **barra de progresso** indica atividade
 
-a interface permanece responsiva
+Isso é implementado utilizando:
 
-barra de progresso indica atividade
-
-Isso é implementado usando:
 
 SwingWorker
-Menu contextual
 
-Clique com botão direito sobre um resultado para acessar:
 
-Abrir arquivo
+---
 
-Abrir local do arquivo
+# 🖱 Menu Contextual
 
-Copiar caminho
+Clique com o **botão direito** em um resultado para acessar:
 
-Duplo clique para abrir arquivos
+- Abrir arquivo
+- Abrir local do arquivo
+- Copiar caminho
 
-Assim como no explorador de arquivos do Windows, o usuário pode abrir arquivos com duplo clique.
+---
 
-Ordenação de resultados
+# 🖱 Duplo Clique para Abrir Arquivos
+
+Assim como no **Explorador de Arquivos do Windows**, o usuário pode abrir arquivos com **duplo clique**.
+
+---
+
+# 📊 Ordenação de Resultados
 
 Os resultados podem ser ordenados por:
 
-Nome
+- Nome
+- Tamanho
+- Data de modificação
 
-Tamanho
+---
 
-Data de modificação
+# 🛠 Tecnologias Utilizadas
 
-Tecnologias utilizadas
+- Java
+- Java Swing
+- FlatLaf
+- Java NIO (File API)
+- Levenshtein Distance
+- SwingWorker
+- WiX Toolset
+- jpackage
 
-Java
+---
 
-Java Swing
+# 📁 Estrutura do Projeto
 
-FlatLaf
 
-Java NIO (File API)
-
-Levenshtein Distance
-
-SwingWorker
-
-WiX Toolset
-
-jpackage
-
-Estrutura do projeto
-JavaProject
+BuscadorDeArquivosJava
 │
 ├─ src
-│  ├─ Main.java
+│ ├─ Main.java
 │
-│  ├─ ui
-│  │   └─ SearchUI.java
+│ ├─ ui
+│ │ └─ SearchUI.java
 │
-│  ├─ service
-│  │   └─ FileSearchService.java
+│ ├─ service
+│ │ └─ FileSearchService.java
 │
-│  ├─ model
-│  │   └─ FileResult.java
+│ ├─ model
+│ │ └─ FileResult.java
 │
-│  └─ utils
-│      └─ LoggerConfig.java
+│ └─ utils
+│ └─ LoggerConfig.java
 │
 ├─ lib
-│   └─ flatlaf-3.4.jar
+│ └─ flatlaf-3.4.jar
 │
 ├─ bin
 │
 └─ README.md
-Como executar o projeto
-Requisitos
 
-JDK 17 ou superior
 
-Windows
+---
 
-Compilar o projeto
+# ▶ Como Executar o Projeto
 
-No diretório raiz execute:
+## Requisitos
 
+- **JDK 17 ou superior**
+- **Windows**
+
+---
+
+## Compilar o Projeto
+
+Execute no diretório raiz:
+
+```bash
 javac -d bin -cp "lib/flatlaf-3.4.jar" src\Main.java src\model\*.java src\service\*.java src\ui\*.java src\utils\*.java
-Criar o arquivo executável JAR
+Criar o Arquivo Executável JAR
 jar cfe FileSearch.jar Main -C bin .
-Executar o programa
+Executar o Programa
 java -jar FileSearch.jar
-Gerar executável para Windows
+📦 Gerar Executável para Windows
 
 O projeto utiliza jpackage para gerar um executável .exe.
 
@@ -148,7 +163,8 @@ WiX Toolset 3.14
 Download:
 
 https://wixtoolset.org
-Gerar o executável
+
+Gerar o Executável
 jpackage --input . --name FileSearch --main-jar FileSearch.jar --main-class Main --type exe
 
 Isso criará uma pasta contendo:
@@ -159,7 +175,7 @@ app/
 
 O executável inclui o Java Runtime, então funciona em qualquer computador Windows.
 
-Exemplo de uso
+🧪 Exemplo de Uso
 
 Abra o programa
 
@@ -169,22 +185,23 @@ Digite parte do nome do arquivo
 
 O sistema exibirá arquivos semelhantes encontrados
 
+🎯 Objetivo do Projeto
 
+Este projeto foi desenvolvido para:
 
-Objetivo do projeto
+Estudo de Java Desktop Development
 
-Este projeto foi desenvolvido como:
+Prática de arquitetura de software
 
-estudo de Java Desktop Development
+Implementação de algoritmos de busca aproximada
 
-prática de arquitetura de software
+Desenvolvimento de interfaces gráficas modernas
 
-implementação de algoritmos de busca aproximada
-
-desenvolvimento de interfaces gráficas modernas
-
-Autor
+👨‍💻 Autor
 
 Desenvolvido por:
 
 Elifaz Emanuel
+
+GitHub:
+https://github.com/lfaz3245
